@@ -4,16 +4,20 @@ class CalcLogic {
 
   ContextModel cm = ContextModel();
   Variable ans = Variable('ans');
+  Variable pi = Variable("π");
   Parser p = Parser();
 
   bool clear = true;
 
   CalcLogic(){
     cm.bindVariable(ans, Number(0));
+    cm.bindVariable(pi, Number(3.141592653589793238));
   }
 
   bool isInteger(num value) =>
       value is int || value == value.roundToDouble();
+
+
 
   updateExpression(String exp, String b) {
     String _output = clear ? "" : exp;
@@ -23,6 +27,15 @@ class CalcLogic {
       break;
 
       case "=": {_output = evaluateExpression(_output); clear = true;}
+      break;
+
+      case "sin" : {_output+="sin(";}
+      break;
+
+      case "cos" : {_output+="cos((";}
+      break;
+
+      case "tan" : {_output+="tan(";}
       break;
 
       default: {_output+=b;}

@@ -30,27 +30,27 @@ class ButtonGrid extends StatelessWidget {
         ),
         new Row(
           children: [
-            calcButton('sin-1',buttonPressHandler),
-            calcButton('cos-1',buttonPressHandler),
-            calcButton('tan-1',buttonPressHandler),
+            calcButton('sin⁻¹',buttonPressHandler),
+            calcButton('cos⁻¹',buttonPressHandler),
+            calcButton('tan⁻¹',buttonPressHandler),
             calcButton('%',buttonPressHandler)
           ],
         ),
 
         new Row(
           children: [
-            calcButton('sqrt',buttonPressHandler),
-            calcButton('nth root',buttonPressHandler),
+            calcButton('√',buttonPressHandler),
+            calcButton('ⁿ√',buttonPressHandler),
             calcButton('ln',buttonPressHandler),
             calcButton('log',buttonPressHandler)
           ],
         ),
         new Row(
           children: [
-            calcButton('pi',buttonPressHandler),
+            calcButton('π',buttonPressHandler),
             calcButton('e',buttonPressHandler),
-            calcButton('frac',buttonPressHandler),
-            calcButton('^',buttonPressHandler)
+            calcButton('ʸ⁄ₓ',buttonPressHandler),
+            calcButton('xʸ',buttonPressHandler)
           ],
         ),
         new Row(

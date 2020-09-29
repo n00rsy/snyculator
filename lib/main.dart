@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:snyculator/socketHandler.dart';
+import 'package:clipboard/clipboard.dart';
 
 import 'calcLogic.dart';
 import 'buttonGrid.dart';
@@ -33,7 +34,21 @@ class SynculatorState extends State<Synculator> {
   String exp = "0";
 
   CalcLogic calcLogic = new CalcLogic();
-  SocketHandler socketHandler = new SocketHandler();
+  SocketHandler socketHandler;
+
+  @override
+  void initState() {
+    print("initializing STATE");
+    socketHandler = new SocketHandler(refreshDisplay);
+    super.initState();
+  }
+
+  refreshDisplay(String s){
+    print("refreshing display");
+    setState(() {
+      exp = s;
+    });
+  }
 
   calcButtonPress(String b){
       String _exp = calcLogic.updateExpression(exp, b);
@@ -50,7 +65,11 @@ class SynculatorState extends State<Synculator> {
           children:<Widget> [
             Display(exp: exp),
             new Expanded(
-                child: new Divider()
+                child: new Divider(
+                  thickness: 2,
+                  height: 10,
+                  color: Colors.black,
+                )
             ),
             ButtonGrid(buttonPressHandler: calcButtonPress)
           ]

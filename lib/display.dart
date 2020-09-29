@@ -1,5 +1,7 @@
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import'segment.dart';
 
 class Display extends StatelessWidget {
 
@@ -7,8 +9,25 @@ class Display extends StatelessWidget {
 
   Display({this.exp});
 
+  Widget displayExpression(String exp) {
+    List<Widget> segments = new List();
+    for(String s in exp.split("7")) {
+      segments.add(Segment(exp:s, fontSize: 0,));
+    }
+    segments.add(Fraction(numerator: "3", denominator: "5555",fontSize: 1));
+    segments.add(SqrtSegment(exp:"1+2+4+5", fontSize:0));
+
+    return Container(
+      child:Row(
+        children:
+          segments,
+      )
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+
     return new Container(
       alignment: Alignment.centerRight,
       padding: new EdgeInsets.only(
@@ -17,16 +36,7 @@ class Display extends StatelessWidget {
           right: 20.0,
         left: 20.0,
       ),
-      child: FittedBox (
-      fit: BoxFit.fitWidth,
-        child: new Text(
-          exp,
-          style: new TextStyle(
-              fontSize: 48.0,
-              fontWeight: FontWeight.bold
-          ),
-        ),
-      ),
-    );
+        child: displayExpression(exp),
+      );
   }
 }
